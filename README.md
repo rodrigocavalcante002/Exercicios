@@ -1,2 +1,2 @@
-# Exercicios
- Este é o meu repsotório de exercícios com PHP
+# Exercícios
+ Este é o meu repositório de exercícios com PHP
