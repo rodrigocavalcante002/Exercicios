@@ -1,0 +1,36 @@
+@charset "UTF-8";
+body{
+    min-height: 100vh;
+    
+
+}
+section{
+    position: relative;
+    min-height: 100vh;
+
+}
+form{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background-color: rgb(0, 7, 29);
+    padding: 40px;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+}
+input{
+   
+    outline: none;
+    margin-bottom:30px ;
+}
+label{
+    
+    display: block;
+}
+input[type="submit"]{
+    width: 50%;
+    
+}
