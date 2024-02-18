@@ -10,19 +10,25 @@
 
     // A instrução try...catch...finally pode ser usada para capturar exceções. O código no bloco final sempre será executado independentemente de uma exceção ter sido detectada. 
     try{
+
         echo divisao(5, 0);
+    
     }catch(Exception $e){
         echo 'Ipossível dividir'."<br>";
     }finally{
         echo 'Fim do processo'."<br>";
     }
+
     echo "<hr>";
+    
     // USANDO MÉTODOS getMessage(), getLine(), getCode e getFile
+    
     echo 'USANDO MÉTODOS getMessage(), getLine(), getCode e getFile'."<br>";
     
     function divisaoNew($dividendo, $divisor)  {
 
         if($divisor == 0 ){
+
             throw new Exception("Divisão por zero"."<br>", 1);
         
         }
