@@ -15,9 +15,21 @@
 
         class Goodbye
         {
-            const LEAVING_MESSAGE = "Thanks you for visit my web site!";
+            const LEAVING_MESSAGE = "Thanks you for visit my WebSite!";
         }
-        echo Goodbye()::LEAVING_MESSAGE;
+        echo Goodbye::LEAVING_MESSAGE;
+        echo "<hr>";
+
+        // Podemos acessar uma constante dentro de uma class usando a palavra-chave "self" seguido do operador de resuloção de escopo (::) e por fim o nome da contante:
+        class Welcome 
+        {
+            const WELCOME = "Welcome to my  WebSite again!";
+            function welcome() {
+                echo self::WELCOME;
+            }
+        }
+        $welcome = new Welcome();
+        echo $welcome -> welcome()
     ?>
 </body>
 </html>
