@@ -7,58 +7,111 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
-        //Acess modifiers (Modificadores de acesso) = É o modo como pode ser acessado as propiedades e métodos de uma class. Existem três tipos de modificadores de acesso: 
-        
-        // public - Com  este você pode acessar as propiedades e métodos em qualquer lugar (Ele é o padrão).
-        
-        // protected - Com este você pode acessar métodos e propiedades somente dentro da class ou através de class derivadas desta class. 
+<?php 
+//Acess modifiers (Modificadores de acesso) = É o modo como pode ser acessado as propiedades e métodos de uma class. Existem três tipos de modificadores de acesso: 
 
-        // private - Com este você poderá acessar os métodos e propiedades SOMENTE dentro da class.
+// public - Com  este você pode acessar as propiedades e métodos em qualquer lugar (Ele é o padrão).
 
-        class Fruit 
-        {
-            public $name;
-            protected $color;
-            private $weight;
-        }
+// protected - Com este você pode acessar métodos e propiedades somente dentro da class ou através de class derivadas desta class. 
 
-        $mango = new Fruit();
-        echo "<p>".$mango -> name = 'Mango'."</p>"; //OK
+// private - Com este você poderá acessar os métodos e propiedades SOMENTE dentro da class e os nem as classes que herdaram(extends) poderam acessar.
+class Veiculo 
+{
+    // Propiedades
+    protected $modelo;
+    public $cor;
+    public $ano;
+    private $outrosModelos;
 
-        // echo "<p>".$mango -> color = 'Yellow'."</p>"; //ERRO
+    // Métodos
+    public function Ligar() {
+        echo "Ligou <br>";
+    }
+    public function Desligar() {
+        echo "Desligou <br>";
+    }
+    
+    // Coseguiremos acessar a propiedade $outrosModelos somente dentro desta classe, porque ela é privada.
+    public function SetOutrosModelos($outrosM) {
+        $this->outrosModelo = $outrosM;
+    }
+    public function GetOutrosModelos() {
+        return $this->outrosModelo;
+    }
+    
+     
+}
 
-        // echo "<p>".$mango -> weight = '620g'."</p>"; //ERRO
+// Classes herdando métodos/funções básicas da classe Veiculo
+// As classes podem ter funções específicas 
 
-        echo "<hr>";
-        //Agora, faremos o mesmo, porém usando modificadore de acesso em nossos métodos
+class Carro extends Veiculo
+{
+     // Acessando propiedade protegida
+     public function SetModelo($m) {
+        $this->modelo = $m;
+    }
+    // Retornando o modelo
+    public function GetModelo() {
+        return $this->modelo;
+    }
 
-        class Carro 
-        {
-            
-            public $marca;
-            public $modelo;
-            public $cor;
+    // Função específica do carro
+    public function AbrirPortas() {
+        echo "Portas abriram em 3s <br>";
+    }
+}
 
-            // public por padrão:
-            function set_marca($n) {
-                $this -> marca = $n;
-            }
-            // protected 
-            protected function set_modelo($n) {
-                $this -> modelo = $n;
-            }
-            private function set_cor($n) {
-                $this -> cor = $n;
-            }
-            
-        }
-        $carro = new Carro();
+class Moto extends Veiculo
+{
+     // Acessando propiedade protegida
+     public function SetModelo($m) {
+        $this->modelo = $m;
+    }
+    // Retornando o modelo
+    public function GetModelo() {
+        return $this->modelo;
+    }
+    // Função específica da moto
+    public function Tripe() {
+        echo "Abaixando tripé em 3s <br>";
+    }
+}
+// istância de Veículo para acessar a propiedade Protected $outrosModelos
+$outrosModelos = new Veiculo();
+$outrosModelos->SetOutrosModelos("Mercedes");
+echo $outrosModelos->GetOutrosModelos();
 
-        $carro -> set_marca('BMW'); //Ok
-        // $carro -> set_modelo('E36'); Erro
-        // $carro -> set_cor('Azul'); Erro
+echo "<hr>";
 
-    ?>
+// Instância
+$carro = new Carro();
+// Setando valor na propiedade $modelo Protected
+$carro->SetModelo("Bmw");
+$carro->cor = "Azul";
+$carro->ano = "2006";
+var_dump($carro);
+
+// Funções comuns em um veículo
+$carro->Ligar();
+$carro->Desligar();
+// Função específica
+$carro->AbrirPortas();
+echo "<hr>";
+
+$moto = new Moto();
+// Setando valor na propiedade $modelo Protected
+$moto->SetModelo("Biz");
+$moto->cor = "Branca";
+$moto->ano = "2019";
+var_dump($moto);
+
+// Funções comuns em um veículo
+$moto->Ligar();
+$moto->Desligar();
+// Função específica
+$moto->Tripe();
+
+?>
 </body>
 </html>
