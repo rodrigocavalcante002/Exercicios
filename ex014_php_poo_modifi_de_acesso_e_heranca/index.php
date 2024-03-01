@@ -111,6 +111,33 @@ $moto->Ligar();
 $moto->Desligar();
 // Função específica
 $moto->Tripe();
+echo "<hr>";
+// Segundo exemplo
+
+// Métodos com modificadores de acsso
+class Onibus 
+{
+    public $cor;
+    public $ano;
+    public $destino;
+
+    // Métodos
+
+    private function PontoPartida(){
+        echo "Rio de Janeiro";
+    }
+
+    // Método que irá acessar o Método privado
+    
+    public function MostrarPontoPartida() {
+        $this->PontoPartida();
+    }
+}
+
+$onibus = new Onibus();
+
+echo $onibus->MostrarPontoPartida();
+// obs: Se tentarmos fazer uma class que herde ônibus, irá dar um erro, pois só podemos acessar o método 'PontoPartida' dentro do escopo da class (Onibus). Isso ocorrerá porque o método 'PontoPartida' é privado, ou seja, só podemos acessá-lo dentro da classe que ela foi declarada.;' 
 
 ?>
 </body>
