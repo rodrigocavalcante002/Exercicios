@@ -124,7 +124,7 @@ class Onibus
     // Métodos
 
     private function PontoPartida(){
-        echo "Rio de Janeiro";
+        echo 'Rio de Janeiro';
     }
 
     // Método que irá acessar o Método privado
@@ -137,7 +137,53 @@ class Onibus
 $onibus = new Onibus();
 
 echo $onibus->MostrarPontoPartida();
-// obs: Se tentarmos fazer uma class que herde ônibus, irá dar um erro, pois só podemos acessar o método 'PontoPartida' dentro do escopo da class (Onibus). Isso ocorrerá porque o método 'PontoPartida' é privado, ou seja, só podemos acessá-lo dentro da classe que ela foi declarada.;' 
+// obs: Se tentarmos fazer uma class que herde ônibus, irá dar um erro, pois só podemos acessar o método 'PontoPartida' dentro do escopo da class (Onibus). Isso ocorrerá porque o método 'PontoPartida' é privado, ou seja, só podemos acessá-lo dentro da classe que ela foi declarada.
+
+echo "<hr>";
+
+// Último exerício sobre heranças: Polimorfose
+// É quando reescrevemos um método herdado de uma classe
+Class Pessoa
+{
+    public function Pagar(){
+        echo 'Pagou parcelado em 12 veses com juros';
+    }
+}
+
+class Cliente extends Pessoa
+{
+    // Reescrevendo o método herdado
+    public function Pagar(){
+        echo 'Pagou parcelado em 3 vezes sem juros';
+    }
+}
+
+$cliente = new Cliente();
+$cliente->Pagar();
+
+echo "<br>";
+
+// Poderiamos fazer de outra forma:
+class Matematica
+{
+    public function Subtrair(){
+        echo '1 - 2 é: '. 2 - 1;
+    }
+    public function Soma(){
+        echo '1 + 2 é: '. 1 + 2;
+    }
+}
+class Conta extends Matematica
+{
+    // Reescrevendo o método Soma que foi herdado por Subtrair que também havia sido herdado
+    
+    public function Soma(){
+        $this->Subtrair();
+    }
+}
+
+$conta = new Conta();
+$conta->Soma();
 
 ?>
 </body>
