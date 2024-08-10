@@ -1,5 +1,0 @@
-<?php 
-$routes = [
-    'home.php'
-]
-?>
