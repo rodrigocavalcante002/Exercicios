@@ -1,0 +1,13 @@
+{
+    "name": "botman/installer",
+    "description": "chatbot",
+    "autoload": {
+        "psr-4": {
+            "Botman\\Installer\\": "src/"
+        }
+    },
+    "require": {
+        "irwan-runtuwene/driver-whatsapp": "*",
+        "nesbot/carbon": "^3.7"
+    }
+}
